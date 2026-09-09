@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Reequipación, personalización y detailing profesional para BMW y Grupo VAG (Audi, Volkswagen). Tecnología, confort, estética y cuidado con acabado OEM.">
+    <title>RE-EQUIP | Reequipación & Detailing BMW y Grupo VAG</title>
+    <style>
+        :root {
+            --bg: #0a0b0d;
+            --panel: #121417;
+            --text: #f4f4f2;
+            --muted: #9da2a8;
+            --accent: #d9ff3f;
+            --line: #292d32
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        .wrap {
+            width: min(1280px, 92%);
+            margin: 0 auto
+        }
+
+        header {
+            position: absolute;
+            z-index: 2;
+            width: 100%;
+            padding: 24px 0
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .logo {
+            font-size: 1.15rem;
+            font-weight: 800;
+            letter-spacing: 2px
+        }
+
+        .logo span {
+            color: var(--accent)
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            font-size: .82rem;
+            color: #d2d4d6
+        }
+
+        nav a {
+            display: inline-flex;
+            align-items: center
+        }
+
+        nav a:hover {
+            color: var(--accent)
+        }
+
+        .nav-cta {
+            border: 1px solid #72777d;
+            padding: 8px 16px;
+            border-radius: 3px
+        }
+
+        .hero {
+            min-height: 760px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(90deg, rgba(10, 11, 13, .98) 18%, rgba(10, 11, 13, .75) 55%, rgba(10, 11, 13, .35)), url('https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1900&q=85') center/cover
+        }
+
+        .hero-content {
+            max-width: 760px;
+            padding-top: 60px;
+            margin: 0
+        }
+
+        .eyebrow {
+            color: var(--accent);
+            font-size: .75rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 6.4rem);
+            line-height: .91;
+            letter-spacing: -5px;
+            text-transform: uppercase;
+            margin-bottom: 28px
+        }
+
+        h1 em {
+            font-style: normal;
+            color: var(--accent)
+        }
+
+        .hero p {
+            max-width: 580px;
+            color: #c5c8cc;
+            font-size: 1.08rem;
+            margin-bottom: 32px
+        }
+
+        .buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 23px;
+            font-size: .82rem;
+            font-weight: bold;
+            letter-spacing: .5px;
+            border: 1px solid var(--accent);
+            background: var(--accent);
+            color: #10120b;
+            border-radius: 2px;
+            transition: transform .2s ease
+        }
+
+        .btn.alt {
+            background: transparent;
+            color: var(--text);
+            border-color: #747980
+        }
+
+        .btn:hover {
+            transform: translateY(-2px)
+        }
+
+        .brands-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: .76rem;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            color: #8f949a;
+            margin-top: 22px
+        }
+
+        .brands-tag strong {
+            color: var(--text);
+            font-weight: bold
+        }
+
+        section {
+            padding: 105px 0
+        }
+
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 35px;
+            align-items: end;
+            margin-bottom: 42px
+        }
+
+        .section-head h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            line-height: 1;
+            text-transform: uppercase;
+            letter-spacing: -2px
+        }
+
+        .section-head p {
+            color: var(--muted);
+            max-width: 440px
+        }
+
+        .services {
+            background: #0d0f11
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+            background: var(--line)
+        }
+
+        .card {
+            background: var(--panel);
+            padding: 34px 26px;
+            min-height: 245px;
+            display: flex;
+            flex-direction: column
+        }
+
+        .number {
+            color: var(--accent);
+            font-size: .75rem;
+            font-weight: bold;
+            letter-spacing: 2px
+        }
+
+        .card h3 {
+            font-size: 1.15rem;
+            text-transform: uppercase;
+            margin: 32px 0 12px
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: .9rem;
+            line-height: 1.55
+        }
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 75px;
+            align-items: center
+        }
+
+        .about-img {
+            height: 500px;
+            background: url('https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1000&q=80') center/cover;
+            border-radius: 2px
+        }
+
+        .about h2 {
+            font-size: clamp(2.3rem, 5vw, 4rem);
+            line-height: .95;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            margin: 14px 0 25px
+        }
+
+        .about p {
+            color: var(--muted);
+            margin-bottom: 22px
+        }
+
+        .checks {
+            list-style: none;
+            color: #e4e5e5
+        }
+
+        .checks li {
+            margin: 13px 0
+        }
+
+        .checks li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: bold;
+            margin-right: 12px
+        }
+
+        .contact {
+            background: var(--accent);
+            color: #111;
+            padding: 32px 0
+        }
+
+        .contact .section-head {
+            margin: 0;
+            align-items: center
+        }
+
+        .contact .eyebrow {
+            color: #3f4911;
+            margin-bottom: 4px
+        }
+
+        .contact h2 {
+            font-size: clamp(1.7rem, 3vw, 2.5rem);
+            line-height: 1;
+            letter-spacing: -1px
+        }
+
+        .contact p {
+            color: #353b20;
+            font-size: .92rem;
+            line-height: 1.4;
+            max-width: 420px
+        }
+
+        .contact .btn {
+            background: #111;
+            color: #fff;
+            border-color: #111;
+            margin-top: 10px;
+            padding: 10px 18px;
+            font-size: .76rem
+        }
+
+        footer {
+            padding: 25px 0;
+            color: #777;
+            font-size: .78rem;
+            border-top: 1px solid var(--line)
+        }
+
+        footer .wrap {
+            display: flex;
+            justify-content: space-between
+        }
+
+        @media(max-width:1050px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+        }
+
+        @media(max-width:700px) {
+            nav {
+                display: none
+            }
+
+            .hero {
+                min-height: 650px
+            }
+
+            .grid,
+            .about {
+                grid-template-columns: 1fr
+            }
+
+            .about-img {
+                height: 300px;
+                order: 2
+            }
+
+            .section-head {
+                display: block
+            }
+
+            .section-head p {
+                margin-top: 18px
+            }
+
+            .card {
+                min-height: 190px
+            }
+
+            section {
+                padding: 75px 0
+            }
+
+            h1 {
+                letter-spacing: -3px
+            }
+
+            footer .wrap {
+                display: block
+            }
+
+            footer span {
+                display: block;
+                margin-top: 8px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="wrap nav">
+            <a class="logo" href="#inicio">RE<span>•</span>EQUIP</a>
+            <nav>
+                <a href="#servicios">Servicios</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#contacto" class="nav-cta">Contactar</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="hero" id="inicio">
+            <div class="wrap">
+                <div class="hero-content">
+                    <div class="eyebrow">Especialistas en BMW & Grupo VAG · Murcia</div>
+                    <h1>Tu coche.<br><em>Mejor equipado.</em></h1>
+                    <p>Instalamos tecnología, confort, personalización y detailing con la máxima precisión OEM.
+                        Especialistas en <strong>BMW</strong> y vehículos del <strong>Grupo VAG</strong> (principalmente
+                        <strong>Audi</strong> y <strong>Volkswagen</strong>).</p>
+                    <div class="buttons">
+                        <a class="btn" href="#contacto">Solicitar presupuesto</a>
+                        <a class="btn alt" href="#servicios">Ver servicios</a>
+                    </div>
+                    <div class="brands-tag">Especialidad: <strong>BMW · Audi · Volkswagen (VAG)</strong></div>
+                </div>
+            </div>
+        </section>
+        <section class="services" id="servicios">
+            <div class="wrap">
+                <div class="section-head">
+                    <h2>Lo que<br>hacemos</h2>
+                    <p>Soluciones integrales para tu BMW, Audi o Volkswagen. Reequipaciones con acabado original y
+                        cuidado estético de precisión.</p>
+                </div>
+                <div class="grid">
+                    <article class="card">
+                        <span class="number">01 / TECNOLOGÍA</span>
+                        <h3>Conectividad</h3>
+                        <p>CarPlay, Android Auto, cuadros digitales (Virtual Cockpit / Digital Cluster), pantallas
+                            táctiles y cámaras de asistencia.</p>
+                    </article>
+                    <article class="card">
+                        <span class="number">02 / CONFORT</span>
+                        <h3>Equipamiento</h3>
+                        <p>Asientos calefactables, iluminación ambiental multicolor, portón eléctrico, acceso confort y
+                            audio de alta fidelidad.</p>
+                    </article>
+                    <article class="card">
+                        <span class="number">03 / ESTILO & OEM+</span>
+                        <h3>Personalización</h3>
+                        <p>Volantes deportivos M / S-Line / R-Line, molduras interiores exclusivas, pilotos dinámicos y
+                            codificación experta.</p>
+                    </article>
+                    <article class="card">
+                        <span class="number">04 / CUIDADO & ESTÉTICA</span>
+                        <h3>Detailing & Limpieza</h3>
+                        <p>Limpieza integral en profundidad, descontaminado, tratamiento de cuero, pulido de carrocería
+                            y sellado cerámico de protección.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section id="nosotros">
+            <div class="wrap about">
+                <div class="about-img" role="img" aria-label="Interior y acabado de vehículo de alta gama"></div>
+                <div>
+                    <div class="eyebrow">La diferencia está en el detalle</div>
+                    <h2>Ingeniería.<br>Pasión.<br>Detalle.</h2>
+                    <p>Somos expertos en reequipación y cuidado automotriz para BMW y grupo VAG (Audi y Volkswagen).
+                        Dominamos cada módulo electrónico, codificación y técnica de detailing para que tu coche luzca y
+                        funcione como el primer día.</p>
+                    <ul class="checks">
+                        <li>Codificación y diagnóstico oficial multimarca (BMW, Audi, VW)</li>
+                        <li>Componentes originales y accesorios OEM de primera calidad</li>
+                        <li>Servicio de detailing minucioso con productos de alta gama</li>
+                        <li>Instalación técnica limpia, sin fallos en cuadro y con total garantía</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="contact" id="contacto">
+            <div class="wrap section-head">
+                <div>
+                    <div class="eyebrow">¿Empezamos?</div>
+                    <h2>Hazlo<br>a tu manera.</h2>
+                </div>
+                <div>
+                    <p>Cuéntanos qué necesita tu BMW, Audi o Volkswagen (reequipamiento, personalización o detailing) y
+                        te prepararemos una propuesta a medida.</p>
+                    <a class="btn" href="mailto:hola@reequip.es">hola@reequip.es&nbsp; →</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="wrap">
+            <strong>RE•EQUIP</strong>
+            <span>© 2024 RE-EQUIP · Reequipación & Detailing BMW y Grupo VAG (Audi · Volkswagen)</span>
+        </div>
+    </footer>
+</body>
+
+</html>
