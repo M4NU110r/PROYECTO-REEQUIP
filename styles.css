@@ -1,0 +1,889 @@
+/* ==========================================================================
+   1. VARIABLES Y CONFIGURACIÓN GLOBAL
+   ========================================================================== */
+:root {
+    --bg: #0a0b0d;
+    --panel: #121417;
+    --text: #f4f4f2;
+    --muted: #9da2a8;
+    --accent: #d9ff3f;
+    --line: #292d32;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Contenedor centralizado para limitar el ancho en pantalla */
+.wrap {
+    width: min(1280px, 92%);
+    margin: 0 auto;
+}
+
+
+/* ==========================================================================
+   2. CABECERA Y NAVEGACIÓN (HEADER & NAV)
+   ========================================================================== */
+header {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    padding: 24px 0;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    font-size: .82rem;
+    color: #d2d4d6;
+}
+
+nav a {
+    display: inline-flex;
+    align-items: center;
+    transition: color .2s ease;
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--accent);
+}
+
+.nav-cta {
+    border: 1px solid #72777d;
+    padding: 8px 16px;
+    border-radius: 3px;
+    transition: all .2s ease;
+}
+
+.nav-cta:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+
+/* ==========================================================================
+   3. SECCIÓN HERO (PORTADA PRINCIPAL)
+   ========================================================================== */
+.hero {
+    min-height: 760px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(10, 11, 13, .98) 18%, rgba(10, 11, 13, .75) 55%, rgba(10, 11, 13, .35)), url('https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1900&q=85') center/cover;
+}
+
+.hero-content {
+    max-width: 760px;
+    padding-top: 60px;
+    margin: 0;
+}
+
+.eyebrow {
+    color: var(--accent);
+    font-size: .75rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: clamp(3rem, 8vw, 6.4rem);
+    line-height: .91;
+    letter-spacing: -5px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+}
+
+h1 em {
+    font-style: normal;
+    color: var(--accent);
+}
+
+.hero p {
+    max-width: 580px;
+    color: #c5c8cc;
+    font-size: 1.08rem;
+    margin-bottom: 32px;
+}
+
+.buttons {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+/* Botones generales */
+.btn {
+    display: inline-block;
+    padding: 15px 23px;
+    font-size: .82rem;
+    font-weight: bold;
+    letter-spacing: .5px;
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: #10120b;
+    border-radius: 2px;
+    transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    cursor: pointer;
+}
+
+.btn.alt {
+    background: transparent;
+    color: var(--text);
+    border-color: #747980;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.brands-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: .76rem;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: #8f949a;
+    margin-top: 22px;
+}
+
+.brands-tag strong {
+    color: var(--text);
+    font-weight: bold;
+}
+
+
+/* ==========================================================================
+   4. ESTILOS BASE DE SECCIÓN Y CABECERAS DE SECCIÓN
+   ========================================================================== */
+section {
+    padding: 105px 0;
+}
+
+.section-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 35px;
+    align-items: end;
+    margin-bottom: 42px;
+}
+
+.section-head h2 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+}
+
+.section-head p {
+    color: var(--muted);
+    max-width: 440px;
+}
+
+
+/* ==========================================================================
+   5. SECCIÓN SERVICIOS (CUADRÍCULA DE TARJETAS)
+   ========================================================================== */
+.services {
+    background: #0d0f11;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: var(--line);
+}
+
+.card {
+    position: relative;
+    background: var(--panel);
+    padding: 34px 26px;
+    min-height: 245px;
+    display: flex;
+    flex-direction: column;
+    transition: transform .2s ease, background .2s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    background: #16191f;
+    transform: translateY(-2px);
+}
+
+/* 5.1 ESTADO BLOQUEADO ESTILO VIDEOJUEGO (ITEMS NO DESBLOQUEADOS) */
+.card.card-locked {
+    background: #111317;
+    cursor: not-allowed;
+    user-select: none;
+}
+
+.card.card-locked:hover {
+    background: #111317;
+    transform: none;
+}
+
+.card.card-locked .card-content {
+    opacity: 0.68;
+    filter: grayscale(0.45);
+    pointer-events: none;
+    transition: opacity .2s ease;
+}
+
+.card.card-locked:hover .card-content {
+    opacity: 0.88;
+}
+
+.card-locked-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(10, 12, 15, 0.42);
+    z-index: 2;
+}
+
+.locked-badge {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    background: rgba(18, 21, 26, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 10px 18px;
+    border-radius: 4px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: border-color .25s ease, transform .25s ease;
+}
+
+.card.card-locked:hover .locked-badge {
+    border-color: rgba(255, 255, 255, 0.28);
+    transform: scale(1.04);
+}
+
+.lock-icon {
+    font-size: 1.15rem;
+    line-height: 1;
+}
+
+.lock-text {
+    font-size: .68rem;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    color: #e0e4eb;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.number {
+    color: var(--accent);
+    font-size: .75rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.card h3 {
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    margin: 32px 0 12px;
+}
+
+.card p {
+    color: var(--muted);
+    font-size: .9rem;
+    line-height: 1.55;
+}
+
+.card-link {
+    margin-top: auto;
+    padding-top: 18px;
+    color: var(--accent);
+    font-weight: bold;
+    font-size: .82rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap .2s ease;
+}
+
+.card-link:hover {
+    gap: 10px;
+}
+
+
+/* ==========================================================================
+   5.1. PÁGINA INDEPENDIENTE DE TARIFAS DE DETAILING (detailing.html)
+   ========================================================================== */
+.header-inner {
+    position: relative;
+    border-bottom: 1px solid var(--line);
+    background: #0d0f12;
+}
+
+.pricing-page-hero {
+    padding: 75px 0 40px;
+    text-align: center;
+    background: radial-gradient(circle at 50% 20%, rgba(217, 255, 63, 0.05) 0%, transparent 60%);
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: .8rem;
+    font-weight: bold;
+    color: var(--muted);
+    letter-spacing: .5px;
+    margin-bottom: 25px;
+    transition: color .2s ease;
+}
+
+.back-link:hover {
+    color: var(--accent);
+}
+
+.pricing-page-hero h1 {
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    line-height: .92;
+    text-transform: uppercase;
+    letter-spacing: -3px;
+    margin-bottom: 12px;
+}
+
+.pricing-page-hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+}
+
+.pricing-subtitle {
+    color: var(--muted);
+    font-size: .88rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.pricing-badges {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.badge-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid #23272d;
+    padding: 10px 18px;
+    border-radius: 4px;
+    font-size: .78rem;
+    letter-spacing: 1.5px;
+}
+
+.badge-icon {
+    color: var(--accent);
+    font-size: 1rem;
+}
+
+/* LISTA Y FILAS DE TARIFAS DE DETAILING */
+.pricing-section {
+    background: #090a0c;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 60px 0 100px;
+}
+
+.pricing-table-title {
+    text-align: center;
+    margin: 30px 0 35px;
+    position: relative;
+}
+
+.pricing-table-title span {
+    background: #090a0c;
+    padding: 0 20px;
+    color: #fff;
+    font-weight: 800;
+    letter-spacing: 3px;
+    font-size: .85rem;
+    position: relative;
+    z-index: 1;
+}
+
+.pricing-table-title::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: var(--line);
+    z-index: 0;
+}
+
+.pricing-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.pricing-row {
+    display: grid;
+    grid-template-columns: 46px 1.8fr 130px 1.25fr 130px;
+    align-items: center;
+    gap: 18px;
+    background: #111417;
+    border: 1px solid #21252a;
+    border-left: 3px solid #2c323a;
+    padding: 12px 20px;
+    border-radius: 4px;
+    transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+
+.pricing-row:hover {
+    transform: translateY(-2px);
+    background: #15191e;
+    border-left-color: var(--accent);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.pricing-icon {
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(217, 255, 63, 0.35);
+    background: rgba(217, 255, 63, 0.04);
+    transform: skewX(-12deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    color: var(--accent);
+    transition: border-color .25s ease, background .25s ease, box-shadow .25s ease;
+    flex-shrink: 0;
+}
+
+.pricing-icon span {
+    transform: skewX(12deg);
+    font-size: 1.25rem;
+    display: inline-block;
+    line-height: 1;
+}
+
+.pricing-row:hover .pricing-icon {
+    border-color: var(--accent);
+    background: rgba(217, 255, 63, 0.1);
+    box-shadow: 0 0 12px rgba(217, 255, 63, 0.2);
+}
+
+.pricing-main h4 {
+    font-size: .98rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.pricing-main p {
+    font-size: .82rem;
+    color: var(--muted);
+    line-height: 1.4;
+}
+
+.pack-tag {
+    display: inline-block;
+    background: var(--accent);
+    color: #111;
+    font-size: .65rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-bottom: 6px;
+}
+
+.pricing-price {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--accent);
+    white-space: nowrap;
+}
+
+.pricing-benefit {
+    font-size: .82rem;
+    color: #abb0b7;
+    border-left: 1px solid #282c33;
+    padding-left: 16px;
+    line-height: 1.35;
+}
+
+.pricing-thumb {
+    width: 130px;
+    height: 64px;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #23272e;
+    background: #0a0c0e;
+    flex-shrink: 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+    transition: border-color .25s ease, box-shadow .25s ease;
+}
+
+.pricing-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.92) contrast(1.05);
+    transition: transform .35s ease, filter .35s ease;
+}
+
+.pricing-row:hover .pricing-thumb {
+    border-color: rgba(217, 255, 63, 0.4);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6), 0 0 10px rgba(217, 255, 63, 0.15);
+}
+
+.pricing-row:hover .pricing-thumb img {
+    transform: scale(1.06);
+    filter: brightness(1.05) contrast(1.1);
+}
+
+.pricing-footer-banner {
+    margin-top: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 30px;
+    border-top: 1px solid #20242a;
+    max-width: 1040px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.feature-tags {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    font-size: .82rem;
+    color: #cfd2d6;
+}
+
+
+/* ==========================================================================
+   6. SECCIÓN SOBRE NOSOTROS (ABOUT)
+   ========================================================================== */
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 75px;
+    align-items: center;
+}
+
+.about-img {
+    height: 500px;
+    background: url('https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1000&q=80') center/cover;
+    border-radius: 2px;
+}
+
+.about h2 {
+    font-size: clamp(2.3rem, 5vw, 4rem);
+    line-height: .95;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    margin: 14px 0 25px;
+}
+
+.about p {
+    color: var(--muted);
+    margin-bottom: 22px;
+}
+
+.checks {
+    list-style: none;
+    color: #e4e5e5;
+}
+
+.checks li {
+    margin: 13px 0;
+}
+
+.checks li::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: bold;
+    margin-right: 12px;
+}
+
+
+/* ==========================================================================
+   7. SECCIÓN CONTACTO (BANNER INFERIOR "¿EMPEZAMOS?")
+   ========================================================================== */
+.contact {
+    background: var(--accent);
+    color: #111;
+    padding: 48px 0;
+}
+
+.contact .section-head {
+    margin: 0;
+    align-items: center;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* 7.1 BLOQUE IZQUIERDO: "¿Empezamos? Hazlo a tu manera" */
+.contact-info {
+    transform: translateX(60px);
+}
+
+.contact .eyebrow {
+    color: #3f4911;
+    margin-bottom: 4px;
+}
+
+.contact h2 {
+    font-size: clamp(1.7rem, 3vw, 2.5rem);
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+/* 7.2 BLOQUE DERECHO: Texto de propuesta y botón de correo */
+.contact-action {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    margin-left: auto;
+    transform: translateX(680px);
+}
+
+.contact p {
+    color: #353b20;
+    font-size: .92rem;
+    line-height: 1.4;
+    max-width: 420px;
+}
+
+.contact .btn {
+    background: #111;
+    color: #fff;
+    border-color: #111;
+    margin-top: 10px;
+    padding: 10px 18px;
+    font-size: .76rem;
+}
+
+
+/* ==========================================================================
+   8. PIE DE PÁGINA (FOOTER)
+   ========================================================================== */
+footer {
+    padding: 25px 0;
+    color: #777;
+    font-size: .78rem;
+    border-top: 1px solid var(--line);
+}
+
+footer .wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* ==========================================================================
+   9. MEDIA QUERIES (DISEÑO RESPONSIVO)
+   ========================================================================== */
+/* Tablets y pantallas medianas (<= 1050px) */
+@media(max-width:1050px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pricing-row {
+        grid-template-columns: 42px 1.5fr 115px 1.1fr 110px;
+        gap: 14px;
+        padding: 10px 16px;
+    }
+
+    .pricing-thumb {
+        width: 110px;
+        height: 56px;
+    }
+
+    .pricing-icon {
+        width: 38px;
+        height: 38px;
+    }
+
+    .pricing-icon span {
+        font-size: 1.1rem;
+    }
+}
+
+@media(max-width:840px) {
+    .pricing-row {
+        grid-template-columns: 40px 1.6fr 110px 100px;
+        gap: 12px;
+    }
+
+    .pricing-thumb {
+        width: 100px;
+        height: 52px;
+    }
+
+    .pricing-benefit {
+        display: none;
+    }
+}
+
+/* Móviles y pantallas pequeñas (<= 700px) */
+@media(max-width:700px) {
+    nav {
+        display: none;
+    }
+
+    .hero {
+        min-height: 650px;
+    }
+
+    .grid,
+    .about {
+        grid-template-columns: 1fr;
+    }
+
+    .pricing-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        text-align: left;
+        padding: 16px;
+    }
+
+    .pricing-icon {
+        display: none;
+    }
+
+    .pricing-thumb {
+        width: 100%;
+        height: 120px;
+        order: -1;
+        margin-bottom: 2px;
+    }
+
+    .pricing-price {
+        font-size: 1.3rem;
+    }
+
+    .pricing-benefit {
+        display: block;
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid #20242a;
+        padding-top: 8px;
+    }
+
+    .pricing-footer-banner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .about-img {
+        height: 300px;
+        order: 2;
+    }
+
+    .section-head {
+        display: block;
+    }
+
+    .contact .section-head {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .contact-info {
+        transform: none;
+    }
+
+    .contact-action {
+        align-items: flex-start;
+        text-align: left;
+        margin-left: 0;
+        transform: none;
+    }
+
+    .section-head p {
+        margin-top: 18px;
+    }
+
+    .card {
+        min-height: 190px;
+    }
+
+    section {
+        padding: 75px 0;
+    }
+
+    h1 {
+        letter-spacing: -3px;
+    }
+
+    footer .wrap {
+        display: block;
+    }
+
+    footer span {
+        display: block;
+        margin-top: 8px;
+    }
+}
