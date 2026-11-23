@@ -477,7 +477,7 @@ section {
 
 .pricing-row {
     display: grid;
-    grid-template-columns: 46px 1.8fr 130px 1.25fr 130px;
+    grid-template-columns: 46px 1.8fr 140px 1.25fr 130px;
     align-items: center;
     gap: 18px;
     background: #111417;
@@ -551,10 +551,58 @@ section {
 }
 
 .pricing-price {
-    font-size: 1.15rem;
+    width: 140px;
+    height: 40px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    justify-items: center;
+    padding: 0 8px;
+    background: rgba(217, 255, 63, 0.04);
+    border: 1px solid rgba(217, 255, 63, 0.16);
+    border-radius: 4px;
+    font-size: 1.05rem;
     font-weight: 800;
     color: var(--accent);
     white-space: nowrap;
+    transition: background .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.pricing-row:hover .pricing-price {
+    background: rgba(217, 255, 63, 0.08);
+    border-color: rgba(217, 255, 63, 0.35);
+    box-shadow: 0 0 12px rgba(217, 255, 63, 0.12);
+}
+
+.price-from {
+    justify-self: end;
+    text-align: right;
+}
+
+.price-sep {
+    justify-self: center;
+    padding: 0 5px;
+    color: rgba(217, 255, 63, 0.65);
+    font-weight: 600;
+    font-size: .95rem;
+}
+
+.price-to {
+    justify-self: start;
+    text-align: left;
+}
+
+.pricing-price-single {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.price-fixed {
+    text-align: center;
+    font-size: 1.15rem;
+    letter-spacing: .5px;
 }
 
 .pricing-benefit {
@@ -667,61 +715,110 @@ section {
 
 
 /* ==========================================================================
-   7. SECCIÓN CONTACTO (BANNER INFERIOR "¿EMPEZAMOS?")
+   7. SECCIÓN CONTACTO (BANNER INFERIOR AMARILLO)
    ========================================================================== */
 .contact {
     background: var(--accent);
     color: #111;
-    padding: 48px 0;
+    padding: 24px 0;
 }
 
-.contact .section-head {
+/* Contenedor del banner: flexbox simétrico para alinear ambos lados a la misma altura */
+.contact-container {
+    width: 100%;
+    max-width: 100%;
     margin: 0;
-    align-items: center;
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0 clamp(14px, 1.5vw, 24px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Alinea exactamente a la misma altura vertical el bloque izquierdo y derecho */
+    gap: clamp(20px, 3.5vw, 44px);
 }
 
-/* 7.1 BLOQUE IZQUIERDO: "¿Empezamos? Hazlo a tu manera" */
-.contact-info {
-    transform: translateX(60px);
+/* Bloque lateral izquierdo */
+.contact-side-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
 }
 
-.contact .eyebrow {
-    color: #3f4911;
-    margin-bottom: 4px;
-}
-
-.contact h2 {
-    font-size: clamp(1.7rem, 3vw, 2.5rem);
-    line-height: 1;
-    letter-spacing: -1px;
-}
-
-/* 7.2 BLOQUE DERECHO: Texto de propuesta y botón de correo */
-.contact-action {
+/* Bloque lateral derecho */
+.contact-side-right {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     text-align: right;
-    margin-left: auto;
-    transform: translateX(680px);
+    gap: 6px;
 }
 
-.contact p {
-    color: #353b20;
-    font-size: .92rem;
-    line-height: 1.4;
+/* 7.1 ELEMENTO 1: Subtítulo / Eyebrow superior ("¿Empezamos?") */
+.contact-eyebrow {
+    margin: 0;
+}
+
+.contact-eyebrow span {
+    font-size: .78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #3f4911;
+    display: inline-block;
+    line-height: 1.2;
+}
+
+/* 7.2 ELEMENTO 2: Título principal ("Hazlo a tu manera.") */
+.contact-title {
+    margin: 0;
+}
+
+.contact-title h2 {
+    font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+    line-height: 1.05;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    color: #111;
+    margin: 0;
+}
+
+/* 7.3 ELEMENTO 3: Texto de propuesta / descripción */
+.contact-desc {
     max-width: 420px;
+    margin: 0;
 }
 
-.contact .btn {
+.contact-desc p {
+    color: #353b20;
+    font-size: .88rem;
+    line-height: 1.35;
+    margin: 0;
+}
+
+/* 7.4 ELEMENTO 4: Botón de acción / contacto */
+.contact-cta {
+    margin: 0;
+}
+
+.contact-cta .btn {
+    display: inline-flex;
+    align-items: center;
     background: #111;
     color: #fff;
-    border-color: #111;
-    margin-top: 10px;
-    padding: 10px 18px;
+    border: 1px solid #111;
+    padding: 8px 18px;
     font-size: .76rem;
+    font-weight: 700;
+    letter-spacing: .5px;
+    border-radius: 3px;
+    transition: all .2s ease;
+    text-decoration: none;
+}
+
+.contact-cta .btn:hover {
+    background: #202428;
+    border-color: #202428;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 
@@ -751,9 +848,20 @@ footer .wrap {
     }
 
     .pricing-row {
-        grid-template-columns: 42px 1.5fr 115px 1.1fr 110px;
+        grid-template-columns: 42px 1.5fr 130px 1.1fr 110px;
         gap: 14px;
         padding: 10px 16px;
+    }
+
+    .pricing-price {
+        width: 130px;
+        height: 38px;
+        font-size: .95rem;
+        padding: 0 5px;
+    }
+
+    .price-fixed {
+        font-size: 1.05rem;
     }
 
     .pricing-thumb {
@@ -773,8 +881,15 @@ footer .wrap {
 
 @media(max-width:840px) {
     .pricing-row {
-        grid-template-columns: 40px 1.6fr 110px 100px;
+        grid-template-columns: 40px 1.6fr 125px 100px;
         gap: 12px;
+    }
+
+    .pricing-price {
+        width: 125px;
+        height: 38px;
+        font-size: .92rem;
+        padding: 0 4px;
     }
 
     .pricing-thumb {
@@ -821,7 +936,16 @@ footer .wrap {
     }
 
     .pricing-price {
-        font-size: 1.3rem;
+        width: auto;
+        min-width: 0;
+        display: inline-grid;
+        padding: 6px 14px;
+        font-size: 1.15rem;
+        margin: 4px 0;
+    }
+
+    .pricing-price-single {
+        display: inline-flex;
     }
 
     .pricing-benefit {
@@ -846,20 +970,23 @@ footer .wrap {
         display: block;
     }
 
-    .contact .section-head {
-        padding-left: 0;
-        padding-right: 0;
+    .contact-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 0 16px;
     }
 
-    .contact-info {
-        transform: none;
-    }
-
-    .contact-action {
+    .contact-side-left,
+    .contact-side-right {
         align-items: flex-start;
         text-align: left;
-        margin-left: 0;
-        transform: none;
+        width: 100%;
+    }
+
+    .contact-desc {
+        text-align: left;
+        max-width: 100%;
     }
 
     .section-head p {
